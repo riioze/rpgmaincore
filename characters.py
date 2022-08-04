@@ -56,3 +56,13 @@ class Character:
         """
         c,max = self.attributes[attribute]
         return randint(0,max)<=c+bonus
+    def __repr__(self):
+        r = ''
+        if self.race:
+            r+=self.race.__repr__()+'\n'
+        if self.attributes:
+            r+='attributes : \n'
+        for name,ratio in self.attributes.items():
+            n,m = ratio
+            r+= "\t{} : {}/{}\n".format(name,n,m)
+        return r
