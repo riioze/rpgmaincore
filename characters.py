@@ -2,13 +2,14 @@ from random import randint
 
 class Character:
     """class corresponding to all types of characters"""
-    def __init__(self,attributes_list=[]):
+    def __init__(self,attributes_list=[],race=None):
         """creation of the Character w/ its attributes
         attributes_list : list of attributes
             attribute : (name,generation_rule,max)
 
         """
         self.generate(attributes_list)
+        self.race = race
     def generate(self,attributes_list):
         """
         generation of the attributes
@@ -55,10 +56,3 @@ class Character:
         """
         c,max = self.attributes[attribute]
         return randint(0,max)<=c+bonus
-
-
-if __name__ == '__main__':
-    test = Character([('force','30+1d10',100),('int','4d5',100)])
-    test.up('force')
-    print(test.attributes)
-    print(test.test('force'))
