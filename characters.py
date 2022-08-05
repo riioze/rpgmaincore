@@ -10,6 +10,7 @@ class Character:
         """
         self.generate(attributes_list)
         self.race = race
+        self.competences = []
     def generate(self,attributes_list):
         """
         generation of the attributes
@@ -65,4 +66,12 @@ class Character:
         for name,ratio in self.attributes.items():
             n,m = ratio
             r+= "\t{} : {}/{}\n".format(name,n,m)
+        if self.competences:
+            r+='competences : \n'
+            for c in self.competences:
+                r+='\t'+c.__repr__()+'\n'
         return r
+    def add_competence(self,competence):
+        """add a compretence if it corresponds to the race of the character"""
+        if self.race == competence.race:
+            self.competences.append(competence)
