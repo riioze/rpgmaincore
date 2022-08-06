@@ -73,5 +73,5 @@ class Character:
         return r
     def add_competence(self,competence):
         """add a compretence if it corresponds to the race of the character"""
-        if self.race == competence.race:
+        if competence.races == [] or self.race in competence.races:
             self.competences.append(competence)
